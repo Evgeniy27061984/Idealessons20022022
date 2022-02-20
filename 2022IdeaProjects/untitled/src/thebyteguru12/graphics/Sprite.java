@@ -1,0 +1,29 @@
+package thebyteguru12.graphics;
+
+import thebyteguru12.utils.Utils;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+// хранит информацию которую нужно вытащить
+//этот класс держит одно изображение
+//в дальнейшем это класс будет extend другой класс, который будет держать много изображений
+public class Sprite {
+    private SpriteSheet sheet;
+    private float       scale; //это не в пикселях а на сколько изображение будет большим
+    private BufferedImage image;
+
+    public Sprite (SpriteSheet sheet, float scale) {
+        this.sheet = sheet;
+        this.scale = scale;
+        image = sheet.getSprite(0);
+        image = Utils.resize(image,(int)(image.getWidth() * scale), (int)(image.getHeight() * scale));
+    }
+
+    public void render (Graphics2D g, float x, float y) {
+
+        g.drawImage(image,(int)(x),(int)(y),null); // с какими размерами мы их должны нарисовать
+
+
+    }
+}
